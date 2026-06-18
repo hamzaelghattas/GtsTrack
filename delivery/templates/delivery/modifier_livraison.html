@@ -1,0 +1,46 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<h1>Modifier Livraison</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Statut</label>
+    <br>
+
+    <select name="statut">
+
+        <option value="En attente"
+        {% if livraison.statut == 'En attente' %}selected{% endif %}>
+        En attente
+        </option>
+
+        <option value="En préparation"
+        {% if livraison.statut == 'En préparation' %}selected{% endif %}>
+        En préparation
+        </option>
+
+        <option value="En livraison"
+        {% if livraison.statut == 'En livraison' %}selected{% endif %}>
+        En livraison
+        </option>
+
+        <option value="Livré"
+        {% if livraison.statut == 'Livré' %}selected{% endif %}>
+        Livré
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">
+        Modifier
+    </button>
+
+</form>
+
+{% endblock %}

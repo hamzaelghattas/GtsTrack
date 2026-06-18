@@ -1,0 +1,67 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+">
+
+<h1>Commandes</h1>
+
+<a href="/ajouter-commande/"
+style="
+background:#5bc0de;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
++ Ajouter Commande
+</a>
+
+</div>
+
+<br><br>
+
+<table style="
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+">
+
+<tr style="background:#5bc0de;color:white;">
+    <th style="padding:15px;">Client</th>
+    <th style="padding:15px;">Produit</th>
+    <th style="padding:15px;">Quantité</th>
+    <th style="padding:15px;">Date</th>
+</tr>
+{% for commande in commandes %}
+<tr>
+
+<td style="padding:12px;border:1px solid #ddd;">
+    {{ commande.client }}
+</td>
+
+<td style="padding:12px;border:1px solid #ddd;">
+    {{ commande.produit }}
+</td>
+
+<td style="padding:12px;border:1px solid #ddd;">
+    {{ commande.quantite }}
+</td>
+
+<td style="padding:12px;border:1px solid #ddd;">
+    {{ commande.date_commande }}
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<h1>Modifier Client</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text"
+           name="nom"
+           value="{{ client.nom }}">
+
+    <br><br>
+
+    <input type="text"
+           name="telephone"
+           value="{{ client.telephone }}">
+
+    <br><br>
+
+    <input type="text"
+           name="adresse"
+           value="{{ client.adresse }}">
+
+    <br><br>
+
+    <button type="submit">
+        Enregistrer
+    </button>
+
+</form>
+
+{% endblock %}

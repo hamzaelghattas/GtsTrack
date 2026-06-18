@@ -1,0 +1,57 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<h1>Ajouter Commande</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Client</label>
+    <br>
+
+    <select name="client" required>
+        {% for client in clients %}
+            <option value="{{ client.id }}">
+                {{ client.nom }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Produit</label>
+    <br>
+
+    <input type="text"
+           name="produit"
+           required>
+
+    <br><br>
+
+    <label>Quantité</label>
+    <br>
+
+    <input type="number"
+           name="quantite"
+           required>
+
+    <br><br>
+
+    <label>Date</label>
+    <br>
+
+    <input type="date"
+           name="date_commande"
+           required>
+
+    <br><br>
+
+    <button type="submit">
+        Ajouter
+    </button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GtsTrack</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            display:flex;
+            background:#f4f6f9;
+        }
+
+        .sidebar{
+            width:250px;
+            height:100vh;
+            background:#3f4a56;
+            color:white;
+            padding:20px;
+        }
+
+        .logo{
+            text-align:center;
+            font-size:28px;
+            font-weight:bold;
+            color:#5bc0de;
+            margin-bottom:40px;
+        }
+
+        .sidebar ul{
+            list-style:none;
+        }
+
+        .sidebar ul li{
+            margin:15px 0;
+        }
+
+        .sidebar ul li a{
+            text-decoration:none;
+            color:white;
+            display:block;
+            padding:10px;
+            border-radius:8px;
+        }
+
+        .sidebar ul li a:hover{
+            background:#5bc0de;
+        }
+
+        .content{
+            flex:1;
+            padding:30px;
+        }
+
+        .title{
+            font-size:30px;
+            margin-bottom:20px;
+            color:#3f4a56;
+        }
+
+        .cards{
+            display:flex;
+            gap:20px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            width:250px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h3{
+            color:#5bc0de;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">GtsTrack</div>
+
+    <ul>
+        <li><a href="/">🏠 Tableau de bord</a></li>
+        <li><a href="/clients/">👥 Clients</a></li>
+        <li><a href="/commandes/">📦 Commandes</a></li>
+        <li><a href="/livraisons/">🚚 Livraisons</a></li>
+        <li><a href="#">📊 Statistiques</a></li>
+        <li><a href="#">🚪 Déconnexion</a></li>
+    </ul>
+</div>
+
+<div class="content">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

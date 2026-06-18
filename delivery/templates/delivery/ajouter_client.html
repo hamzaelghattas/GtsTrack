@@ -1,0 +1,22 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<h1>Ajouter Client</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="nom" placeholder="Nom"><br><br>
+
+    <input type="text" name="telephone" placeholder="Téléphone"><br><br>
+
+    <input type="text" name="adresse" placeholder="Adresse"><br><br>
+
+    <button type="submit">
+        Ajouter
+    </button>
+
+</form>
+
+{% endblock %}

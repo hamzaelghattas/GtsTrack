@@ -1,0 +1,141 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<div style="display:flex;justify-content:space-between;align-items:center;">
+    <h1>Clients</h1>
+
+    <button style="
+        background:#5bc0de;
+        color:white;
+        border:none;
+        padding:10px 15px;
+        border-radius:8px;
+        cursor:pointer;
+        font-weight:bold;
+    ">
+        <a href="/ajouter-client/"
+   style="
+   background:#5bc0de;
+   color:white;
+   padding:10px 15px;
+   border-radius:8px;
+   text-decoration:none;
+   font-weight:bold;
+   ">
+   + Ajouter Client
+</a>
+    </button>
+</div>
+
+<br>
+<form method="GET" style="margin-bottom:20px;">
+
+    <input
+        type="text"
+        name="recherche"
+        placeholder="Rechercher un client..."
+        style="
+        padding:10px;
+        width:300px;
+        border:1px solid #ccc;
+        border-radius:8px;
+        "
+    >
+
+    <button
+        type="submit"
+        style="
+        background:#5bc0de;
+        color:white;
+        border:none;
+        padding:10px 15px;
+        border-radius:8px;
+        cursor:pointer;
+        "
+    >
+        Rechercher
+    </button>
+
+</form>
+
+    <table style="
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+">
+
+    <tr style="background:#5bc0de;color:white;">
+        <th style="padding:12px;border:1px solid white;">Nom</th>
+        <th style="padding:12px;border:1px solid white;">Téléphone</th>
+        <th style="padding:12px;border:1px solid white;">Adresse</th>
+        <th style="padding:12px;border:1px solid white;">Actions</th>
+    </tr>
+
+    {% for client in clients %}
+    <tr>
+        <td style="padding:12px;border:1px solid #ddd;">
+            {{ client.nom }}
+        </td>
+
+        <td style="padding:12px;border:1px solid #ddd;">
+            {{ client.telephone }}
+        </td>
+
+        <td style="padding:12px;border:1px solid #ddd;">
+            {{ client.adresse }}
+        </td>
+
+        <td style="padding:12px;border:1px solid #ddd;">
+
+            <button style="
+                background:#f0ad4e;
+                color:white;
+                border:none;
+                padding:8px 12px;
+                border-radius:5px;
+                cursor:pointer;
+            ">
+                <a href="/modifier-client/{{ client.id }}/"
+   style="
+   background:#f0ad4e;
+   color:white;
+   padding:8px 12px;
+   border-radius:5px;
+   text-decoration:none;
+   ">
+   ✏️ Modifier
+</a>
+            </button>
+
+            <button style="
+                background:#d9534f;
+                color:white;
+                border:none;
+                padding:8px 12px;
+                border-radius:5px;
+                cursor:pointer;
+                margin-left:5px;
+            ">
+               <a href="/supprimer-client/{{ client.id }}/"
+   style="
+   background:#d9534f;
+   color:white;
+   padding:8px 12px;
+   border-radius:5px;
+   text-decoration:none;
+   ">
+   🗑️ Supprimer
+</a>
+            </button>
+
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock %}

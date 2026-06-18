@@ -1,0 +1,67 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<h1>Ajouter Livraison</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Commande</label>
+    <br>
+
+    <select name="commande" required>
+
+        {% for commande in commandes %}
+
+        <option value="{{ commande.id }}">
+            {{ commande }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Statut</label>
+    <br>
+
+    <select name="statut">
+
+        <option value="En attente">
+            En attente
+        </option>
+
+        <option value="En préparation">
+            En préparation
+        </option>
+
+        <option value="En livraison">
+            En livraison
+        </option>
+
+        <option value="Livré">
+            Livré
+        </option>
+
+    </select>
+
+    <br><br>
+    <label>Date Livraison</label>
+<br>
+
+<input type="date"
+       name="date_livraison"
+       required>
+
+<br><br>
+
+    <button type="submit">
+        Ajouter Livraison
+    </button>
+
+</form>
+
+{% endblock %}

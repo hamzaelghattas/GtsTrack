@@ -1,0 +1,86 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+">
+
+<h1>Livraisons</h1>
+
+<a href="/ajouter-livraison/"
+style="
+background:#5bc0de;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
++ Ajouter Livraison
+</a>
+
+</div>
+
+<table style="
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+">
+
+<tr style="background:#5bc0de;color:white;">
+    <th style="padding:12px;">Commande</th>
+    <th style="padding:12px;">Statut</th>
+    <th style="padding:12px;">Actions</th>
+</tr>
+
+{% for livraison in livraisons %}
+
+<tr>
+
+<td style="padding:12px;border:1px solid #ddd;">
+    {{ livraison.commande }}
+</td>
+
+<td style="padding:12px;border:1px solid #ddd;">
+    {{ livraison.statut }}
+</td>
+
+<td style="padding:12px;border:1px solid #ddd;">
+
+    <a href="/modifier-livraison/{{ livraison.id }}/"
+    style="
+    background:#f0ad4e;
+    color:white;
+    padding:6px 10px;
+    border-radius:5px;
+    text-decoration:none;
+    ">
+    ✏️ Modifier
+    </a>
+
+    <a href="/supprimer-livraison/{{ livraison.id }}/"
+    style="
+    background:#d9534f;
+    color:white;
+    padding:6px 10px;
+    border-radius:5px;
+    text-decoration:none;
+    margin-left:5px;
+    ">
+    🗑️ Supprimer
+    </a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
