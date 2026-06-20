@@ -6,77 +6,137 @@
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:20px;
+margin-bottom:25px;
 ">
 
-<h1>Livraisons</h1>
+    <h1 style="
+    color:#1e3a8a;
+    font-size:35px;
+    ">
+    🚚 Livraisons
+    </h1>
 
-<a href="/ajouter-livraison/"
-style="
-background:#5bc0de;
-color:white;
-padding:10px 15px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-">
-+ Ajouter Livraison
-</a>
+    <a href="/ajouter-livraison/"
+    style="
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(37,99,235,0.3);
+    ">
+    ➕ Ajouter Livraison
+    </a>
 
 </div>
 
 <table style="
 width:100%;
-border-collapse:collapse;
 background:white;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+border-collapse:collapse;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 ">
 
-<tr style="background:#5bc0de;color:white;">
-    <th style="padding:12px;">Commande</th>
-    <th style="padding:12px;">Statut</th>
-    <th style="padding:12px;">Actions</th>
+<tr style="background:#2563eb;color:white;">
+
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Commande
+    </th>
+
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Statut
+    </th>
+
+    <th style="padding:15px;">
+        Actions
+    </th>
+
 </tr>
 
 {% for livraison in livraisons %}
 
+<tr style="border-bottom:2px solid #e5e7eb;">
+
+    <td style="padding:15px;border-right:1px solid #e5e7eb;">
+        {{ livraison.commande }}
+    </td>
+
+    <td style="padding:15px;border-right:1px solid #e5e7eb;">
+
+        {% if livraison.statut == 'En attente' %}
+        <span style="background:#f59e0b;color:white;padding:6px 12px;border-radius:20px;">
+            En attente
+        </span>
+
+        {% elif livraison.statut == 'En préparation' %}
+        <span style="background:#3b82f6;color:white;padding:6px 12px;border-radius:20px;">
+            En préparation
+        </span>
+
+        {% elif livraison.statut == 'En livraison' %}
+        <span style="background:#f97316;color:white;padding:6px 12px;border-radius:20px;">
+            En livraison
+        </span>
+
+        {% else %}
+        <span style="background:#22c55e;color:white;padding:6px 12px;border-radius:20px;">
+            Livré
+        </span>
+        {% endif %}
+
+    </td>
+
+    <td style="padding:15px;">
+
+        <a href="/modifier-livraison/{{ livraison.id }}/"
+        style="
+        background:#f59e0b;
+        color:white;
+        padding:8px 12px;
+        border-radius:8px;
+        text-decoration:none;
+        ">
+        ✏️ Modifier
+        </a>
+
+        <a href="https://www.google.com/maps?q={{ livraison.commande.client.latitude }},{{ livraison.commande.client.longitude }}"
+        target="_blank"
+        style="
+        background:#2563eb;
+        color:white;
+        padding:8px 12px;
+        border-radius:8px;
+        text-decoration:none;
+        margin-left:5px;
+        ">
+        🗺️ Carte
+        </a>
+
+        <a href="/supprimer-livraison/{{ livraison.id }}/"
+        style="
+        background:#ef4444;
+        color:white;
+        padding:8px 12px;
+        border-radius:8px;
+        text-decoration:none;
+        margin-left:5px;
+        ">
+        🗑️ Supprimer
+        </a>
+
+    </td>
+
+</tr>
+
+{% empty %}
+
 <tr>
-
-<td style="padding:12px;border:1px solid #ddd;">
-    {{ livraison.commande }}
-</td>
-
-<td style="padding:12px;border:1px solid #ddd;">
-    {{ livraison.statut }}
-</td>
-
-<td style="padding:12px;border:1px solid #ddd;">
-
-    <a href="/modifier-livraison/{{ livraison.id }}/"
-    style="
-    background:#f0ad4e;
-    color:white;
-    padding:6px 10px;
-    border-radius:5px;
-    text-decoration:none;
-    ">
-    ✏️ Modifier
-    </a>
-
-    <a href="/supprimer-livraison/{{ livraison.id }}/"
-    style="
-    background:#d9534f;
-    color:white;
-    padding:6px 10px;
-    border-radius:5px;
-    text-decoration:none;
-    margin-left:5px;
-    ">
-    🗑️ Supprimer
-    </a>
-
-</td>
-
+    <td colspan="3" style="padding:25px;text-align:center;">
+        Aucune livraison trouvée
+    </td>
 </tr>
 
 {% endfor %}

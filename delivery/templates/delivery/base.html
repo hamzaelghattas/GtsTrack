@@ -7,80 +7,87 @@
 
     <style>
         *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: Arial, sans-serif;
-        }
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        body{
-            display:flex;
-            background:#f4f6f9;
-        }
+body{
+    display:flex;
+    background:#eef4ff;
+}
 
-        .sidebar{
-            width:250px;
-            height:100vh;
-            background:#3f4a56;
-            color:white;
-            padding:20px;
-        }
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:linear-gradient(180deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:25px;
+    box-shadow:4px 0 15px rgba(0,0,0,0.1);
+}
 
-        .logo{
-            text-align:center;
-            font-size:28px;
-            font-weight:bold;
-            color:#5bc0de;
-            margin-bottom:40px;
-        }
+.logo{
+    text-align:center;
+    font-size:32px;
+    font-weight:bold;
+    color:#60a5fa;
+    margin-bottom:40px;
+    letter-spacing:1px;
+}
 
-        .sidebar ul{
-            list-style:none;
-        }
+.sidebar ul{
+    list-style:none;
+}
 
-        .sidebar ul li{
-            margin:15px 0;
-        }
+.sidebar ul li{
+    margin:12px 0;
+}
 
-        .sidebar ul li a{
-            text-decoration:none;
-            color:white;
-            display:block;
-            padding:10px;
-            border-radius:8px;
-        }
+.sidebar ul li a{
+    text-decoration:none;
+    color:white;
+    display:block;
+    padding:12px 15px;
+    border-radius:12px;
+    transition:0.3s;
+}
 
-        .sidebar ul li a:hover{
-            background:#5bc0de;
-        }
+.sidebar ul li a:hover{
+    background:#3b82f6;
+    transform:translateX(5px);
+}
 
-        .content{
-            flex:1;
-            padding:30px;
-        }
+.content{
+    flex:1;
+    padding:35px;
+}
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    width:260px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
 
-        .title{
-            font-size:30px;
-            margin-bottom:20px;
-            color:#3f4a56;
-        }
+    flex:1;
+    min-width:250px;
+}
 
-        .cards{
-            display:flex;
-            gap:20px;
-        }
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(37,99,235,0.15);
+}
 
-        .card{
-            background:white;
-            padding:20px;
-            border-radius:10px;
-            width:250px;
-            box-shadow:0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .card h3{
-            color:#5bc0de;
-        }
+.card h3{
+    color:#2563eb;
+    margin-bottom:10px;
+}
     </style>
 </head>
 
@@ -94,6 +101,7 @@
         <li><a href="/clients/">👥 Clients</a></li>
         <li><a href="/commandes/">📦 Commandes</a></li>
         <li><a href="/livraisons/">🚚 Livraisons</a></li>
+        <li><a href="/carte/">🗺️ Carte</a></li>
         <li><a href="#">📊 Statistiques</a></li>
         <li><a href="#">🚪 Déconnexion</a></li>
     </ul>

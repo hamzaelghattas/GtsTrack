@@ -29,14 +29,20 @@ def clients(request):
 
 def ajouter_client(request):
     if request.method == 'POST':
+
         nom = request.POST['nom']
         telephone = request.POST['telephone']
         adresse = request.POST['adresse']
 
+        latitude = request.POST.get('latitude')
+        longitude = request.POST.get('longitude')
+
         Client.objects.create(
             nom=nom,
             telephone=telephone,
-            adresse=adresse
+            adresse=adresse,
+            latitude=latitude if latitude else None,
+            longitude=longitude if longitude else None
         )
 
         return redirect('clients')
@@ -157,3 +163,21 @@ def supprimer_livraison(request, id):
     livraison = Livraison.objects.get(id=id)
     livraison.delete()
     return redirect('livraisons')
+def carte(request):
+
+    recherche = request.GET.get('recherche')
+
+    client = None
+
+    if recherche:
+        client = Client.objects.filter(
+            nom__icontains=recherche
+        ).first()
+
+    return render(
+        request,
+        'delivery/carte.html',
+        {
+            'client': client
+        }
+    )

@@ -2,16 +2,42 @@
 
 {% block content %}
 
-<h1>Ajouter Client</h1>
+<h1>➕ Ajouter Client</h1>
+
+<br>
 
 <form method="POST">
     {% csrf_token %}
 
-    <input type="text" name="nom" placeholder="Nom"><br><br>
+    <input type="text"
+           name="nom"
+           placeholder="Nom"
+           required>
+    <br><br>
 
-    <input type="text" name="telephone" placeholder="Téléphone"><br><br>
+    <input type="text"
+           name="telephone"
+           placeholder="Téléphone"
+           required>
+    <br><br>
 
-    <input type="text" name="adresse" placeholder="Adresse"><br><br>
+    <input type="text"
+           name="adresse"
+           placeholder="Adresse"
+           required>
+    <br><br>
+
+    <input type="number"
+           step="any"
+           name="latitude"
+           placeholder="Latitude (ex: 30.4202)">
+    <br><br>
+
+    <input type="number"
+           step="any"
+           name="longitude"
+           placeholder="Longitude (ex: -9.5981)">
+    <br><br>
 
     <button type="submit">
         Ajouter

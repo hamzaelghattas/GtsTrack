@@ -2,140 +2,152 @@
 
 {% block content %}
 
-<div style="display:flex;justify-content:space-between;align-items:center;">
-    <h1>Clients</h1>
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+">
 
-    <button style="
-        background:#5bc0de;
-        color:white;
-        border:none;
-        padding:10px 15px;
-        border-radius:8px;
-        cursor:pointer;
-        font-weight:bold;
+    <h1 style="
+    color:#1e3a8a;
+    font-size:35px;
     ">
-        <a href="/ajouter-client/"
-   style="
-   background:#5bc0de;
-   color:white;
-   padding:10px 15px;
-   border-radius:8px;
-   text-decoration:none;
-   font-weight:bold;
-   ">
-   + Ajouter Client
-</a>
-    </button>
+    👥 Clients
+    </h1>
+
+    <a href="/ajouter-client/"
+    style="
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(37,99,235,0.3);
+    ">
+    ➕ Ajouter Client
+    </a>
+
 </div>
 
-<br>
 <form method="GET" style="margin-bottom:20px;">
 
     <input
-        type="text"
-        name="recherche"
-        placeholder="Rechercher un client..."
-        style="
-        padding:10px;
-        width:300px;
-        border:1px solid #ccc;
-        border-radius:8px;
-        "
-    >
+    type="text"
+    name="recherche"
+    placeholder="🔍 Rechercher un client..."
+    style="
+    width:350px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    outline:none;
+    ">
 
     <button
-        type="submit"
-        style="
-        background:#5bc0de;
-        color:white;
-        border:none;
-        padding:10px 15px;
-        border-radius:8px;
-        cursor:pointer;
-        "
-    >
-        Rechercher
+    type="submit"
+    style="
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-left:5px;
+    ">
+    Rechercher
     </button>
 
 </form>
 
-    <table style="
-    width:100%;
-    border-collapse:collapse;
-    background:white;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+<table style="
+width:100%;
+background:white;
+border-collapse:collapse;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 ">
 
-    <tr style="background:#5bc0de;color:white;">
-        <th style="padding:12px;border:1px solid white;">Nom</th>
-        <th style="padding:12px;border:1px solid white;">Téléphone</th>
-        <th style="padding:12px;border:1px solid white;">Adresse</th>
-        <th style="padding:12px;border:1px solid white;">Actions</th>
-    </tr>
+<tr style="background:#2563eb;color:white;">
 
-    {% for client in clients %}
-    <tr>
-        <td style="padding:12px;border:1px solid #ddd;">
-            {{ client.nom }}
-        </td>
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Nom
+    </th>
 
-        <td style="padding:12px;border:1px solid #ddd;">
-            {{ client.telephone }}
-        </td>
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Téléphone
+    </th>
 
-        <td style="padding:12px;border:1px solid #ddd;">
-            {{ client.adresse }}
-        </td>
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Adresse
+    </th>
 
-        <td style="padding:12px;border:1px solid #ddd;">
+    <th style="padding:15px;">
+        Actions
+    </th>
 
-            <button style="
-                background:#f0ad4e;
-                color:white;
-                border:none;
-                padding:8px 12px;
-                border-radius:5px;
-                cursor:pointer;
-            ">
-                <a href="/modifier-client/{{ client.id }}/"
-   style="
-   background:#f0ad4e;
-   color:white;
-   padding:8px 12px;
-   border-radius:5px;
-   text-decoration:none;
-   ">
-   ✏️ Modifier
-</a>
-            </button>
+</tr>
 
-            <button style="
-                background:#d9534f;
-                color:white;
-                border:none;
-                padding:8px 12px;
-                border-radius:5px;
-                cursor:pointer;
-                margin-left:5px;
-            ">
-               <a href="/supprimer-client/{{ client.id }}/"
-   style="
-   background:#d9534f;
-   color:white;
-   padding:8px 12px;
-   border-radius:5px;
-   text-decoration:none;
-   ">
-   🗑️ Supprimer
-</a>
-            </button>
+{% for client in clients %}
 
-        </td>
-    </tr>
-    {% endfor %}
+<tr style="border-bottom:2px solid #e5e7eb;">
+
+    <td style="
+    padding:15px;
+    border-right:1px solid #e5e7eb;
+    ">
+        {{ client.nom }}
+    </td>
+
+    <td style="
+    padding:15px;
+    border-right:1px solid #e5e7eb;
+    ">
+        {{ client.telephone }}
+    </td>
+
+    <td style="
+    padding:15px;
+    border-right:1px solid #e5e7eb;
+    ">
+        {{ client.adresse }}
+    </td>
+
+    <td style="padding:15px;">
+
+        <a href="/modifier-client/{{ client.id }}/"
+        style="
+        background:#f59e0b;
+        color:white;
+        padding:8px 12px;
+        border-radius:8px;
+        text-decoration:none;
+        ">
+        ✏️ Modifier
+        </a>
+
+        <a href="/supprimer-client/{{ client.id }}/"
+        style="
+        background:#ef4444;
+        color:white;
+        padding:8px 12px;
+        border-radius:8px;
+        text-decoration:none;
+        margin-left:5px;
+        ">
+        🗑️ Supprimer
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
 
 </table>
-
-
 
 {% endblock %}

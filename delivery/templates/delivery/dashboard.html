@@ -2,26 +2,77 @@
 
 {% block content %}
 
-<div class="title">
-    Tableau de bord
-</div>
+<h1 style="
+margin-bottom:30px;
+color:#1e3a8a;
+font-size:35px;
+">
+📊 Tableau de bord
+</h1>
 
 <div class="cards">
 
-    <div class="card">
-        <h3>Clients</h3>
-        <p>{{ clients_count }}</p>
+    <div class="card" style="border-left:6px solid #2563eb;">
+        <h3>👥 Clients</h3>
+
+        <p style="
+        font-size:40px;
+        font-weight:bold;
+        margin-top:15px;
+        color:#1e3a8a;
+        ">
+            {{ clients_count }}
+        </p>
     </div>
 
-    <div class="card">
-        <h3>Commandes</h3>
-        <p>{{ commandes_count }}</p>
+    <div class="card" style="border-left:6px solid #f59e0b;">
+        <h3>📦 Commandes</h3>
+
+        <p style="
+        font-size:40px;
+        font-weight:bold;
+        margin-top:15px;
+        color:#1e3a8a;
+        ">
+            {{ commandes_count }}
+        </p>
     </div>
 
-    <div class="card">
-        <h3>Livraisons</h3>
-        <p>{{ livraisons_count }}</p>
+    <div class="card" style="border-left:6px solid #10b981;">
+        <h3>🚚 Livraisons</h3>
+
+        <p style="
+        font-size:40px;
+        font-weight:bold;
+        margin-top:15px;
+        color:#1e3a8a;
+        ">
+            {{ livraisons_count }}
+        </p>
     </div>
+
+</div>
+
+<br><br>
+
+<div style="
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+">
+
+<h2 style="color:#1e3a8a;">
+📈 Aperçu du système
+</h2>
+
+<br>
+
+<p>👥 Nombre total des clients : <strong>{{ clients_count }}</strong></p>
+<br>
+<p>📦 Nombre total des commandes : <strong>{{ commandes_count }}</strong></p>
+<br>
+<p>🚚 Nombre total des livraisons : <strong>{{ livraisons_count }}</strong></p>
 
 </div>
 

@@ -6,60 +6,90 @@
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:20px;
+margin-bottom:25px;
 ">
 
-<h1>Commandes</h1>
+    <h1 style="
+    color:#1e3a8a;
+    font-size:35px;
+    ">
+    📦 Commandes
+    </h1>
 
-<a href="/ajouter-commande/"
-style="
-background:#5bc0de;
-color:white;
-padding:10px 15px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-">
-+ Ajouter Commande
-</a>
+    <a href="/ajouter-commande/"
+    style="
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(37,99,235,0.3);
+    ">
+    ➕ Ajouter Commande
+    </a>
 
 </div>
 
-<br><br>
-
 <table style="
 width:100%;
-border-collapse:collapse;
 background:white;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+border-collapse:collapse;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
 ">
 
-<tr style="background:#5bc0de;color:white;">
-    <th style="padding:15px;">Client</th>
-    <th style="padding:15px;">Produit</th>
-    <th style="padding:15px;">Quantité</th>
-    <th style="padding:15px;">Date</th>
+<tr style="background:#2563eb;color:white;">
+
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Client
+    </th>
+
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Produit
+    </th>
+
+    <th style="padding:15px;border-right:1px solid rgba(255,255,255,0.3);">
+        Quantité
+    </th>
+
+    <th style="padding:15px;">
+        Date
+    </th>
+
 </tr>
+
 {% for commande in commandes %}
-<tr>
 
-<td style="padding:12px;border:1px solid #ddd;">
-    {{ commande.client }}
-</td>
+<tr style="border-bottom:2px solid #e5e7eb;">
 
-<td style="padding:12px;border:1px solid #ddd;">
-    {{ commande.produit }}
-</td>
+    <td style="padding:15px;border-right:1px solid #e5e7eb;">
+        {{ commande.client }}
+    </td>
 
-<td style="padding:12px;border:1px solid #ddd;">
-    {{ commande.quantite }}
-</td>
+    <td style="padding:15px;border-right:1px solid #e5e7eb;">
+        {{ commande.produit }}
+    </td>
 
-<td style="padding:12px;border:1px solid #ddd;">
-    {{ commande.date_commande }}
-</td>
+    <td style="padding:15px;border-right:1px solid #e5e7eb;">
+        {{ commande.quantite }}
+    </td>
+
+    <td style="padding:15px;">
+        {{ commande.date_commande }}
+    </td>
 
 </tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="4" style="padding:25px;text-align:center;">
+        Aucune commande trouvée
+    </td>
+</tr>
+
 {% endfor %}
 
 </table>

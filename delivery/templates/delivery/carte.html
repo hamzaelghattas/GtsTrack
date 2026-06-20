@@ -1,0 +1,101 @@
+{% extends 'delivery/base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<h1 style="
+color:#1e3a8a;
+font-size:35px;
+margin-bottom:20px;
+">
+🗺️ Carte
+</h1>
+
+<form method="GET">
+
+    <input
+    type="text"
+    name="recherche"
+    placeholder="Nom du client..."
+    style="
+    padding:12px;
+    width:300px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    ">
+
+    <button
+    type="submit"
+    style="
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    ">
+    Rechercher
+    </button>
+
+</form>
+
+<br><br>
+
+{% if client %}
+
+<div style="
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+">
+
+<h2>{{ client.nom }}</h2>
+
+<p><strong>Téléphone :</strong> {{ client.telephone }}</p>
+
+<p><strong>Adresse :</strong> {{ client.adresse }}</p>
+<hr style="margin:20px 0;">
+
+<br>
+
+<div id="map" style="
+width:700px;
+height:700px;
+margin:20px auto;
+border-radius:50%;
+overflow:hidden;
+border:10px solid #2563eb;
+box-shadow:0 0 50px rgba(37,99,235,0.6);
+">
+</div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+var lat = parseFloat("{{ client.latitude }}");
+var lng = parseFloat("{{ client.longitude }}");
+
+var map = L.map('map').setView([lat, lng], 10);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+maxZoom: 19
+}
+).addTo(map);
+
+L.marker([lat, lng])
+.addTo(map)
+.bindPopup("{{ client.nom }}")
+.openPopup();
+
+</script>
+
+{% endif %}
+
+{% endblock %}
