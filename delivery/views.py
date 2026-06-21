@@ -1,16 +1,39 @@
 from django.shortcuts import render, redirect
 from .models import Client, Commande, Livraison
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def dashboard(request):
+
+    clients_count = Client.objects.count()
+    commandes_count = Commande.objects.count()
+    livraisons_count = Livraison.objects.count()
+
+    livrees_count = Livraison.objects.filter(
+        statut='Livré'
+    ).count()
+
+    attente_count = Livraison.objects.filter(
+        statut='En attente'
+    ).count()
+
     context = {
-        'clients_count': Client.objects.count(),
-        'commandes_count': Commande.objects.count(),
-        'livraisons_count': Livraison.objects.count(),
+        'clients_count': clients_count,
+        'commandes_count': commandes_count,
+        'livraisons_count': livraisons_count,
+        'livrees_count': livrees_count,
+        'attente_count': attente_count,
     }
 
-    return render(request, 'delivery/dashboard.html', context)
+    return render(
+        request,
+        'delivery/dashboard.html',
+        context
+    )
 
-
+@login_required
 def clients(request):
     recherche = request.GET.get('recherche')
 
@@ -70,6 +93,8 @@ def modifier_client(request, id):
         'delivery/modifier_client.html',
         {'client': client}
     )
+
+@login_required
 def commandes(request):
     commandes = Commande.objects.all()
 
@@ -108,6 +133,7 @@ def ajouter_commande(request):
         {'clients': clients}
     )
 
+@login_required
 def livraisons(request):
     livraisons = Livraison.objects.all()
 
@@ -181,3 +207,69 @@ def carte(request):
             'client': client
         }
     )
+
+@login_required
+def statistiques(request):
+
+    clients_count = Client.objects.count()
+    commandes_count = Commande.objects.count()
+    livraisons_count = Livraison.objects.count()
+
+    livrees_count = Livraison.objects.filter(
+        statut='Livré'
+    ).count()
+
+    attente_count = Livraison.objects.filter(
+        statut='En attente'
+    ).count()
+
+    pourcentage_livrees = 0
+    pourcentage_attente = 0
+
+    if livraisons_count > 0:
+        pourcentage_livrees = int(
+            (livrees_count / livraisons_count) * 100
+        )
+
+        pourcentage_attente = int(
+            (attente_count / livraisons_count) * 100
+        )
+
+    context = {
+        'clients_count': clients_count,
+        'commandes_count': commandes_count,
+        'livraisons_count': livraisons_count,
+        'livrees_count': livrees_count,
+        'attente_count': attente_count,
+        'pourcentage_livrees': pourcentage_livrees,
+        'pourcentage_attente': pourcentage_attente,
+    }
+
+    return render(
+        request,
+        'delivery/statistiques.html',
+        context
+    )
+def login_view(request):
+
+    if request.method == 'POST':
+
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+
+    return render(request, 'delivery/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

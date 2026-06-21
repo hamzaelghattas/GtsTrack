@@ -32,7 +32,7 @@ font-size:35px;
         font-size:40px;
         font-weight:bold;
         margin-top:15px;
-        color:#1e3a8a;
+        color:#f59e0b;
         ">
             {{ commandes_count }}
         </p>
@@ -45,9 +45,35 @@ font-size:35px;
         font-size:40px;
         font-weight:bold;
         margin-top:15px;
-        color:#1e3a8a;
+        color:#10b981;
         ">
             {{ livraisons_count }}
+        </p>
+    </div>
+
+    <div class="card" style="border-left:6px solid #22c55e;">
+        <h3>✅ Livrées</h3>
+
+        <p style="
+        font-size:40px;
+        font-weight:bold;
+        margin-top:15px;
+        color:#22c55e;
+        ">
+            {{ livrees_count }}
+        </p>
+    </div>
+
+    <div class="card" style="border-left:6px solid #ef4444;">
+        <h3>⏳ En attente</h3>
+
+        <p style="
+        font-size:40px;
+        font-weight:bold;
+        margin-top:15px;
+        color:#ef4444;
+        ">
+            {{ attente_count }}
         </p>
     </div>
 
@@ -70,9 +96,17 @@ box-shadow:0 8px 20px rgba(0,0,0,0.08);
 
 <p>👥 Nombre total des clients : <strong>{{ clients_count }}</strong></p>
 <br>
+
 <p>📦 Nombre total des commandes : <strong>{{ commandes_count }}</strong></p>
 <br>
+
 <p>🚚 Nombre total des livraisons : <strong>{{ livraisons_count }}</strong></p>
+<br>
+
+<p>✅ Livraisons livrées : <strong>{{ livrees_count }}</strong></p>
+<br>
+
+<p>⏳ Livraisons en attente : <strong>{{ attente_count }}</strong></p>
 
 </div>
 

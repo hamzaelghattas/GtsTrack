@@ -71,7 +71,7 @@ body{
     background:white;
     padding:25px;
     border-radius:16px;
-    width:260px;
+    width:300px;
     box-shadow:0 8px 20px rgba(0,0,0,0.08);
     transition:0.3s;
 
@@ -88,13 +88,70 @@ body{
     color:#2563eb;
     margin-bottom:10px;
 }
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(15,23,42,.85), rgba(30,58,138,.85)),
+    url("/static/images/waves.gif");
+
+    background-size:cover;
+    background-position:center;
+    color:white;
+    padding:25px;
+}
+.bubble{
+    position:absolute;
+    bottom:-20px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(96,165,250,.4);
+
+    animation:rise linear infinite;
+    pointer-events:none;
+}
+
+@keyframes rise{
+
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-900px);
+        opacity:0;
+    }
+}
+body::-webkit-scrollbar{
+    display:none;
+}
+
+html{
+    scrollbar-width:none;
+}
     </style>
 </head>
 
 <body>
 
 <div class="sidebar">
-    <div class="logo">GtsTrack</div>
+    <div class="logo">
+    <img
+        src="/static/images/logo.png"
+        alt="GtsTrack"
+        style="
+        width: 200px;
+        display:block;
+        margin:0 auto;
+        "
+    >
+</div>
 
     <ul>
         <li><a href="/">🏠 Tableau de bord</a></li>
@@ -102,8 +159,10 @@ body{
         <li><a href="/commandes/">📦 Commandes</a></li>
         <li><a href="/livraisons/">🚚 Livraisons</a></li>
         <li><a href="/carte/">🗺️ Carte</a></li>
-        <li><a href="#">📊 Statistiques</a></li>
-        <li><a href="#">🚪 Déconnexion</a></li>
+        <li><a href="/statistiques/">📊 Statistiques</a></li>
+        <li> <a href="/logout/">🚪 Déconnexion </a>
+            
+</li>
     </ul>
 </div>
 
@@ -113,6 +172,29 @@ body{
     {% endblock %}
 
 </div>
+<script>
+for(let i=0;i<40;i++){
 
+    let bubble=document.createElement("div");
+
+    bubble.classList.add("bubble");
+
+    let size = 3 + Math.random()*10;
+
+    bubble.style.width = size + "px";
+    bubble.style.height = size + "px";
+
+    bubble.style.left = Math.random()*120 + "px";
+
+    bubble.style.animationDuration =
+    (4 + Math.random()*8) + "s";
+
+    bubble.style.animationDelay =
+    Math.random()*5 + "s";
+
+    document.querySelector(".sidebar")
+    .appendChild(bubble);
+}
+</script>
 </body>
 </html>
